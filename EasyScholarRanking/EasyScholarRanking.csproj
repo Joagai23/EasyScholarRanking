@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>e3747c1c-63cc-4035-9157-c2b8376cd5b9</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Data\spanish-authors.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorAnimate" Version="3.0.0" />
+    <PackageReference Include="ChartJs.Blazor.Fork" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="wwwroot\data\" />
+  </ItemGroup>
+
+</Project>

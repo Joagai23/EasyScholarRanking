@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Google Scholar Ranking (Software Systems) - March 2021",
+    "key": "GSR"
+  },
+  {
+    "name": "ACM/IEEE International Conference on Software Engineering",
+    "key": "ICSE"
+  },
+  {
+    "name": "Information and Software Technology",
+    "key": "Inf._Softw._Technol."
+  },
+  {
+    "name": "Journal of Systems and Software",
+    "key": "J._Syst._Softw."
+  },
+  {
+    "name": "ACM SIGSOFT International Symposium on Foundations of Software Engineering",
+    "key": "SIGSOFT FSE"
+  },
+  {
+    "name": "Empirical Software Engineering",
+    "key": "Empir._Softw._Eng."
+  },
+  {
+    "name": "IEEE Transactions on Software Engineering",
+    "key": "IEEE Trans. Software Eng."
+  },
+  {
+    "name": "ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages",
+    "key": "POPL"
+  },
+  {
+    "name": "ACM SIGPLAN Conference on Programming Language Design and Implementation",
+    "key": "PLDI"
+  },
+  {
+    "name": "IEEE/ACM International Conference on Automated Software Engineering",
+    "key": "ASE"
+  },
+  {
+    "name": "IEEE Software",
+    "key": "IEE Softw."
+  },
+  {
+    "name": "Symposium on Operating Systems Principles",
+    "key": "SOSP"
+  },
+  {
+    "name": "Software & Systems Modeling",
+    "key": "Softw._Syst._Model."
+  },
+  {
+    "name": "Mining Software Repositories",
+    "key": "MSR"
+  },
+  {
+    "name": "International Conference on Software Analysis, Evolution, and Reengineering",
+    "key": "SANER"
+  },
+  {
+    "name": "International Symposium on Software Testing and Analysis",
+    "key": "ISSTA"
+  },
+  {
+    "name": "International Conference on Tools and Algorithms for the Construction and Analysis of Systems",
+    "key": "TACAS"
+  },
+  {
+    "name": "IEEE International Conference on Software Maintenance and Evolution",
+    "key": "ICSME"
+  },
+  {
+    "name": "Proceedings of the ACM on Programming Languages",
+    "key": "Proc._ACM_Program._Lang."
+  },
+  {
+    "name": "Software: Practice and Experience",
+    "key": "Softw._Pract._Exp."
+  },
+  {
+    "name": "ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications",
+    "key": "OOPSLA"
+  }
+]

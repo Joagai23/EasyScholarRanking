@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Easy Scholar Ranking</h1>
+    <hr>
+</div>
+
+<div class="text-justify" id="index">
+    <p>Easy Scholar Ranking is a flexible and simple system to rank computer science researchers.</p> 
+    <p>Inspired by the success of EasyChair, Easy Scholar Ranking meets one of the most recurrent necessities of the academic world, matching researchers among each other. To do so, 
+    the application makes use of DBLP, the on-line reference for bibliographic information on major computer science researchers.</p>
+    <p>Easy Scholar Ranking provides two ways of sorting researchers. The first one, Ranking Search, is focused on classifying researchers while the second one, 
+    Author Search, is centered on providing information about a specific scholar.</p>
+    <p><a asp-area="" asp-controller="RankingSearch" asp-action="Index">Ranking Search</a> provides a way of creating dynamic rankings depending on the venue, years, length of career, 
+    and location chosen by the user. It also implements a statistic graph to see general information about the ranking, such as the percentages of contribution and overall publication mean. </p>
+    <p><a asp-area="" asp-controller="AuthorSearch" asp-action="Index">Author Search</a> gives information about an author given different parameters. Which are the venue, period of years, 
+    and location. If the user chooses to search by Google Scholar Ranking, the search will also provide the venue where the author has performed best. On the other hand, if the user 
+    chooses to filter by an individual venue, the system will look for the information regarding that venue and all of the ones that form GSR. </p>
+</div>

@@ -1,0 +1,320 @@
+﻿@using EasyScholarRanking.Models;
+@using EasyScholarRanking.Data;
+@using ChartJs.Blazor;
+@using ChartJs.Blazor.PieChart;
+@using ChartJs.Blazor.Common;
+@using System;
+@using Microsoft.AspNetCore.Components.Web; <!-- NEVER DELETE -->
+
+<!-- Styles that change code values -->
+<style>
+    .rank-form-container {
+        border: 2px solid #808080;
+        position: absolute;
+        top: 120px;
+        padding: 20px;
+        background-color: #f6f6f6;
+        z-index: 10;
+        opacity: @(ToggleFormValue?1:0);
+        pointer-events: @(ToggleFormValue?"auto":"none");
+    }
+</style>
+
+<!-- Rank form + Venue Writer -->
+<div class="rank-form-container">
+    <div class="rank-form">
+        <b>Venue: </b><br />
+        <input type="text" list="venueList" @bind="Venue" /><br />
+
+        <datalist id="venueList">
+            @foreach (Venue venue in venueList)
+            {
+                <option> @venue.Name </option>
+            }
+        </datalist>
+
+        <b>Starting Year: </b><br />
+        <input type="number" @bind="MinYear" /><br />
+
+        <b>Finishing Year: </b><br />
+        <input type="number" @bind="MaxYear" /><br />
+
+        <b>Active Years: </b><br />
+        <input type="number" @bind="CareerLenght" /><br />
+
+        <b>Number of entries: </b><br />
+        <input type="number" @bind="NumberEntries" /><br />
+
+        <b>Location: </b><br />
+
+        @if (LocationSearch.Equals("local"))
+        {
+            <select class="form-control" @bind="Location">
+                @foreach (String location in locationList)
+                {
+                    <option>@location</option>
+                }
+            </select>
+        }
+        else
+        {
+            <input type="text" @bind="Location" /><br />
+        }
+
+        <b>Location Search: </b><br />
+        <label class="radio-inline"> <input type="radio" name="opradio" @onclick='(e => SetLocationSearch("dblp"))' checked /> Dblp Api </label>
+        <label class="radio-inline"> <input type="radio" name="opradio" @onclick='(e => SetLocationSearch("local"))' /> Database</label><br />
+
+        <input type="button" value="Search Ranking" @onclick="(e => SetAuthorList())" />
+    </div>
+</div>
+
+<!-- Ranking table writer -->
+<div class="table-container">
+    <table class="rank">
+        <thead>
+            <tr>
+                <th id="col1-3" class="rank">Position</th>
+                <th id="col2" class="rank">Name</th>
+                <th id="col1-3" class="rank"># Publications</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (authorList != null && authorList.Count > 0)
+            {
+                int currentPosScore = authorList[0].Score;
+                int currentPos = 1;
+                for (int i = 0; i < authorList.Count; i++)
+                {
+                    <tr class="@(authorList[i].Score>meanPublicationsTable?"above-mean":"below-mean")">
+                        @if (currentPosScore > authorList[i].Score)
+                        {
+                            currentPos = (i + 1);
+                            currentPosScore = authorList[i].Score;
+                            <td id="col1-3" class="rank">@currentPos</td>
+                        }
+                        else
+                        {
+                            <td class="rank">@currentPos</td>
+                        }
+                        <td id="col2" class="rank">@authorList[i].Text</td>
+                        <td id="col1-3" class="rank">@authorList[i].Score</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Cheese wheel statistic -->
+<div class="statistics">
+
+    @if (authorList != null)
+    {
+        <div class="chart">
+            <Chart Config="pieChart" Height="10" Width="10" />
+        </div>
+    }
+    else
+    {
+        <label>
+            Start searching to show your author charts!
+        </label>
+    }
+</div>
+
+<!-- Form toggle -->
+<div class="form-toggle">
+    <input type="button" value="@(ToggleFormValue?"Hide Form":"Show Form")" disabled="@(IsLoading)" @onclick="(e => ToggleForm())" />
+    <div class="info-query">
+        @Query
+    </div>
+</div>
+
+<!-- Loading message -->
+@if (IsLoading)
+{
+    <div class="loading-message" id="c1">
+        Please wait...
+    </div>
+}
+
+
+@code {
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// PROPERTIES
+
+    // Form searching properties
+    private string Venue = "";
+    private string Location = "International";
+    private int MinYear = 2019;
+    private int MaxYear = 2020;
+    private int NumberEntries = 8;
+    private int CareerLenght = 0;
+    private string LocationSearch = "";
+
+    // Search variables
+    private List<AuthorClass> authorList;
+    private List<Venue> venueList;
+    private List<String> locationList;
+    private double meanPublicationsTable = 0;
+
+    // Constants
+    private double contributionPercentage = 0.015; //1.5%
+    private double appereancePercentage = 0.35; //35%
+
+    // UI properties
+    private bool IsLoading = false;
+    private bool ToggleFormValue = false;
+    private PieConfig pieChart;
+    private string Query;
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////// FUNCTIONS
+
+    private async void SetAuthorList()
+    {
+        if (!string.IsNullOrWhiteSpace(Venue) && MinYear > 0 && MaxYear > 0 && NumberEntries > 0 && CareerLenght >= 0 && !string.IsNullOrWhiteSpace(Location))
+        {
+            // Change UI
+            IsLoading = true;
+            ToggleForm();
+
+            // Search ranking and wait until it is returned
+            authorList = new List<AuthorClass>(NumberEntries);
+            List<AuthorClass> list = await Task.Run(SearchRanking);
+
+            authorList = list;
+
+            // Paint cheese
+            if (authorList != null)
+            {
+                pieChart.Data.Datasets.Clear();
+                pieChart.Data.Labels.Clear();
+                FillChart();
+            }
+
+            // Update UI
+            IsLoading = false;
+        }
+
+        Query = DataHelper.GetRankingInfoQuery(Venue, Location, MinYear, MaxYear, NumberEntries, CareerLenght);
+
+        // Tell application we have changed the UI, after awaiting the ranking it does not update automatically
+        this.StateHasChanged();
+    }
+
+    private async Task<List<AuthorClass>> SearchRanking()
+    {
+        List<AuthorClass> list =  Data.SearchDblp.GetRankingSearch(DataHelper.ParseVenue(Venue, venueList), MinYear, MaxYear, NumberEntries, CareerLenght, Location, null, LocationSearch);
+
+        return list;
+    }
+
+    // Toggle Searching Form
+    private void ToggleForm()
+    {
+        ToggleFormValue = !ToggleFormValue;
+    }
+
+    // Change Location Search Type
+    private void SetLocationSearch(string locationSearch)
+    {
+        LocationSearch = locationSearch;
+    }
+
+    // Configure pie chart and get venue list from json
+    protected override void OnInitialized()
+    {
+        pieChart = new PieConfig
+        {
+            Options = new PieOptions
+            {
+                Responsive = true,
+                Title = new OptionsTitle
+                {
+                    Display = true,
+                    Text = "Authors Pie Chart",
+                    FontSize = 16 // Default is 12
+                },
+                MaintainAspectRatio = false,
+                Legend = new Legend
+                {
+                    Display = false
+                }
+            }
+        };
+
+        venueList = Data.JsonFileVenueService.GetVenues().ToList();
+        locationList = DataHelper.GetLocalSearchLocations();
+    }
+
+    // Paint cheese wheel if data recovered is valid
+    private void FillChart()
+    {
+        // Init dataset used for cheese wheel
+        PieDataset<int> dataset = new PieDataset<int>();
+
+        // Obtain number of authors and publications to calculate the mean
+        int totalPublications = DataHelper.GetTotalPublications(authorList);
+        int numberAuthors = authorList.Count;
+
+        string meanText = DataHelper.GetMeanText(totalPublications, numberAuthors);
+        meanPublicationsTable = DataHelper.GetMean(totalPublications, numberAuthors);
+
+        pieChart.Options.Title.Text = "Authors Pie Chart" + meanText;
+
+        int othersScore = 0;
+
+        // Only paint if author data is valid, if not, paint some text above the wheel
+        if (authorList.Count != 0)
+        {
+            int currentScore = authorList[0].Score;
+            int numberOfAuthorsSameScore = DataHelper.CountAuthorByScore(currentScore, authorList);
+            double currentScorePercentage = (double)currentScore / (double)totalPublications;
+            double currentAppereancePercentage = (double)numberOfAuthorsSameScore / (double)NumberEntries;
+
+            // Given a score get the amount of authors that share it and calculate the percentage among all the authors
+            // If the score contributes to a minumum percentage of all the publications it is inserted in the dataset
+            // If the number of authors sharing that score is below a minumum percentage it is inserted in the dataset
+            foreach (AuthorClass author in authorList)
+            {
+                if (currentScore != author.Score)
+                {
+                    currentScore = author.Score;
+                    numberOfAuthorsSameScore = DataHelper.CountAuthorByScore(currentScore, authorList);
+                    currentScorePercentage = (double)currentScore / (double)totalPublications;
+                    currentAppereancePercentage = (double)numberOfAuthorsSameScore / (double)NumberEntries;
+                }
+
+                if (currentScorePercentage > contributionPercentage || currentAppereancePercentage < appereancePercentage)
+                {
+                    double roundedPercentage = Math.Round(currentScorePercentage, 2) * 100;
+                    int roundedIntegerPercentage = (int)roundedPercentage;
+
+                    pieChart.Data.Labels.Add(author.Text + " - " + roundedIntegerPercentage + "%");
+                    dataset.Add(author.Score);
+                }
+                else
+                {
+                    othersScore += author.Score;
+                }
+            }
+
+            // Calculate values for "Others" and insert them in the dataset
+            if (othersScore != 0)
+            {
+                double percentage = ((double)othersScore / (double)totalPublications) * 100;
+                percentage = Math.Round(percentage, 2);
+
+                pieChart.Data.Labels.Add("Others - " + (int)percentage + "%");
+                dataset.Add(othersScore);
+            }
+
+            dataset.BackgroundColor = DataHelper.GetBackgroundColors(authorList.Count);
+            dataset.BorderColor = "#808080";
+
+            pieChart.Data.Datasets.Add(dataset);
+        }
+    }
+}

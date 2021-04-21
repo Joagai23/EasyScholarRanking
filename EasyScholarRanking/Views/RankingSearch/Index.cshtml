@@ -1,0 +1,16 @@
+﻿@using EasyScholarRanking.Views.RankingSearch;
+@{
+    ViewData["Title"] = "Ranking Search";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Ranking Search</h2>
+    <hr>
+</div>
+
+@(await Html.RenderComponentAsync<RankingSearch>(RenderMode.ServerPrerendered))
+<script src="_framework/blazor.server.js"></script>
+
+<!-- This is the glue between Blazor and Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="_content/ChartJs.Blazor.Fork/ChartJsBlazorInterop.js"></script>

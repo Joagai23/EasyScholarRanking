@@ -1,0 +1,31 @@
+﻿@using EasyScholarRanking.Data;
+
+@{
+    ViewData["Title"] = "GSR";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Google Scholar Ranking (Software Systems)</h1>
+    <hr>
+</div>
+
+<div class="text-justify" id="index">
+    @{ 
+        List<Venue> venueList = JsonFileVenueService.GetVenues().ToList();
+
+        <table style=" border-collapse: separate">
+            <tbody>
+                @for(int i = 1; i < venueList.Count; i++)
+                {
+                    <tr>
+                        <td class="author" id="c1">
+                            @i.
+                        <td class="author" id="c2">
+                            @venueList.ElementAt(i).Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
