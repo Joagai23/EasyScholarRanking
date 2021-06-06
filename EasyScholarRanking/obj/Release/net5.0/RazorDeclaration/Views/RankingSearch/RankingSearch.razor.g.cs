@@ -12,49 +12,49 @@ namespace EasyScholarRanking.Views.RankingSearch
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 1 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using EasyScholarRanking.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 2 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using EasyScholarRanking.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 3 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using ChartJs.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 4 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using ChartJs.Blazor.PieChart;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 5 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using ChartJs.Blazor.Common;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 6 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using System;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 7 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
@@ -68,7 +68,7 @@ using Microsoft.AspNetCore.Components.Web;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 144 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
+#line 144 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\RankingSearch\RankingSearch.razor"
        
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////// PROPERTIES

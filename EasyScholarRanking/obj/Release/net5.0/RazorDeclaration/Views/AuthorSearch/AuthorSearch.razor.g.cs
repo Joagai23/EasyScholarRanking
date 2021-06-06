@@ -13,21 +13,21 @@ namespace EasyScholarRanking.Views.AuthorSearch
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
+#line 1 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
 using EasyScholarRanking.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
+#line 2 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
 using EasyScholarRanking.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
+#line 3 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
@@ -41,7 +41,7 @@ using Microsoft.AspNetCore.Components.Web;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 175 "C:\Jorge\Universidad\5\EasyScholarRanking\Projects\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
+#line 175 "C:\Jorge\EasyScholarRanking\EasyScholarRanking\Views\AuthorSearch\AuthorSearch.razor"
        
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////// PROPERTIES

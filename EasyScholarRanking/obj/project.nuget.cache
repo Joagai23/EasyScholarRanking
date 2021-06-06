@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QAGBZEvnFmOsfulgfEdhuGqV3dtidDsSppUyYe8WJaHvFkq/RaqvQFvRuoqjoBCzi3XpwPGTOEPzPmtqccxXHQ==",
+  "dgSpecHash": "UaE67tGYTkuMl5TUI6WOAZDmNnWmvezseV/abCcd6PLsSpj4X5XTheI29tI1qZM74Z4faAEvVOg6rWAunSo8HQ==",
   "success": true,
-  "projectFilePath": "C:\\Jorge\\Universidad\\5\\EasyScholarRanking\\Projects\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
+  "projectFilePath": "C:\\Jorge\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a2071\\.nuget\\packages\\blazoranimate\\3.0.0\\blazoranimate.3.0.0.nupkg.sha512",
     "C:\\Users\\a2071\\.nuget\\packages\\chartjs.blazor.fork\\2.0.1\\chartjs.blazor.fork.2.0.1.nupkg.sha512",

@@ -7150,11 +7150,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Jorge\\Universidad\\5\\EasyScholarRanking\\Projects\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
+      "projectUniqueName": "C:\\Jorge\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
       "projectName": "EasyScholarRanking",
-      "projectPath": "C:\\Jorge\\Universidad\\5\\EasyScholarRanking\\Projects\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
+      "projectPath": "C:\\Jorge\\EasyScholarRanking\\EasyScholarRanking\\EasyScholarRanking.csproj",
       "packagesPath": "C:\\Users\\a2071\\.nuget\\packages\\",
-      "outputPath": "C:\\Jorge\\Universidad\\5\\EasyScholarRanking\\Projects\\EasyScholarRanking\\EasyScholarRanking\\obj\\",
+      "outputPath": "C:\\Jorge\\EasyScholarRanking\\EasyScholarRanking\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -7222,7 +7222,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
